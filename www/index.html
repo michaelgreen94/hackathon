@@ -13,7 +13,13 @@
     <form onsubmit="app.controllers.user.createUser(event)">
       <input type="text" name="username" placeholder="username">
       <input type="password" name="pin" placeholder="password">
-      <button type="submit">Create user</button>
+      <button type="submit">Create User</button>
+    </form>
+
+    <form onsubmit="app.controllers.user.loginUser(event)">
+      <input type="text" name="username" placeholder="username">
+      <input type="password" name="pin" placeholder="password">
+      <button type="submit">Login User</button>
     </form>
   </div>
 

@@ -23,4 +23,8 @@ export default class UserController {
         store.createUser(creds)
     }
 
+    loginUser(e) {
+
+    }
+
 }
