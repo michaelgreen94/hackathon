@@ -1,5 +1,6 @@
 import User from "../models/user.js"
 
+// @ts-ignore
 const server = axios.create({
     baseURL: '//localhost:3000',
     timeout: 3000
