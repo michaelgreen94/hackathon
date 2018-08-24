@@ -4,6 +4,7 @@ let store = new Store()
 
 export default class UserController {
     constructor() {
-
+        console.log("hello")
     }
+
 }
