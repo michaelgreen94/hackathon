@@ -3,6 +3,9 @@ let bp = require('body-parser')
 require('./db/db-config')
 let server = express()
 let port = 3000
+let cors = require('cors')
+
+server.use(cors())
 
 server.use(bp.json())
 server.use(bp.urlencoded(({
@@ -17,9 +20,9 @@ let userRoutes = require('./routes/users')
 
 server.use('/auth', postRoutes)
 server.use('/api/comments', commentRoutes)
-server.use('api/users', userRoutes)
+server.use('/api/users', userRoutes)
 
-server.use('api/*', (err, req, res, next) => {
+server.use('/api/*', (err, req, res, next) => {
   res.status(400).send(err)
 })
 server.use('*', (req, res, next) => {
