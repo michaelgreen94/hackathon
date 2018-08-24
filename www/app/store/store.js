@@ -19,7 +19,6 @@ function setState(prop, data) {
 
 export default class Store {
     createUser(creds) {
-        debugger
         server.post('/auth/register', creds)
             .then(res => {
                 setState('user', new User(creds))
