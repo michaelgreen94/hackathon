@@ -35,6 +35,7 @@ export default class Store {
             })
             .catch(err => {
                 console.log(err)
+                alert('INVALID LOGIN')
             })
     }
 
