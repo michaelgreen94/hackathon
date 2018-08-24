@@ -21,3 +21,5 @@ let schema = new Schema({
   }
   //how does timestamp integrate on front end
 })
+
+module.exports = mongoose.model(schemaName, schema)
