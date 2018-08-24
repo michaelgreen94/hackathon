@@ -18,9 +18,9 @@ let postRoutes = require('./routes/posts')
 let commentRoutes = require('./routes/comments')
 let userRoutes = require('./routes/users')
 
-server.use('/auth', postRoutes)
+server.use('/auth', userRoutes)
 server.use('/api/comments', commentRoutes)
-server.use('/api/users', userRoutes)
+server.use('/api/posts', postRoutes)
 
 server.use('/api/*', (err, req, res, next) => {
   res.status(400).send(err)
