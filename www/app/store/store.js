@@ -25,8 +25,14 @@ export default class Store {
             .catch(console.error)
     }
 
-    loginUser(creds) {
-
+    loginUser(creds, drawUser) {
+        server.get('/api/users/login', creds)
+            .then(res => {
+                drawUser()
+            })
+            .catch(err => {
+                alert('INVALID LOGIN')
+            })
     }
 
     constructor() {

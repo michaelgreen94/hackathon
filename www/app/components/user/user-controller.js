@@ -5,8 +5,11 @@ let store = new Store()
 
 let elem = document.getElementById('app')
 
-function draw() {
-
+function drawUser(user) {
+    let template = `
+    <h1>Hello ${user.username}</h1>
+    `
+    elem.innerHTML = template
 }
 
 export default class UserController {
@@ -24,7 +27,12 @@ export default class UserController {
     }
 
     loginUser(e) {
-
+        e.preventDefault();
+        let creds = {
+            username: e.target.username.value,
+            pin: e.target.pin.value
+        }
+        store.loginUser(creds)
     }
 
 }
