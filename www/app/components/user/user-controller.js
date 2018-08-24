@@ -15,7 +15,6 @@ export default class UserController {
     }
 
     createUser(e) {
-        console.log(e)
         e.preventDefault();
         let creds = {
             username: e.target.username.value,
