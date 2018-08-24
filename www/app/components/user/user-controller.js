@@ -14,7 +14,7 @@ export default class UserController {
 
     }
 
-    login(e) {
+    createUser(e) {
         console.log(e)
         e.preventDefault();
         let creds = {
