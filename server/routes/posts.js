@@ -26,7 +26,7 @@ router.put('/:id', (req, res, next) => {
 router.put('/:id/upvote', (req, res, next) => {
   Posts.findById(req.params.id)
     .then((post) => {
-      post.votes++
+      post.vote++
       return post.save()
     })
     .then(() => res.send({
@@ -38,7 +38,7 @@ router.put('/:id/upvote', (req, res, next) => {
 router.put('/:id/downvote', (req, res, next) => {
   Posts.findById(req.params.id)
     .then((post) => {
-      post.votes--
+      post.vote--
       return post.save()
     })
     .then(() => res.send({
