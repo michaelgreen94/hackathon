@@ -17,10 +17,12 @@ let schema = new Schema({
     type: String
   },
   timestamp: {
-    type: String
+    type: String,
+    default: Date.now()
   },
   vote: {
-    type: String
+    type: Number,
+    default: 0
   }
   //vote type something else?
 })
