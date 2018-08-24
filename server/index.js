@@ -9,3 +9,15 @@ server.use(bp.urlencoded(({
   extended: true
 })))
 server.use(express.static(__dirname + '/../www/'))
+
+//ROUTES
+let postRoutes = require('./routes/posts')
+
+server.use('/auth', postRoutes)
+
+
+
+
+server.listen(port, () => {
+  console.log('Listening on Port: ', port)
+})
