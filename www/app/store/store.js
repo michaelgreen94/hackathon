@@ -1,5 +1,9 @@
 import User from "../models/user.js"
 
+const register = axios.create({
+    baseURL: 'localhost:3000/api',
+    timeout: 3000
+})
 
 let store
 
@@ -14,13 +18,7 @@ function setState(prop, data) {
 
 export default class Store {
     login(creds, draw) {
-        fetch('/auth/login', {
-            method: 'post',
-            body: JSON.stringify(creds),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-            },
-        })
+        register.post('/register')
             .then(res => res.json())
             .then(data => {
                 setState('user', new User(data))
