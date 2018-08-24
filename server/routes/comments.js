@@ -23,6 +23,30 @@ router.put('/:id', (req, res, next) => {
     })).catch(next)
 })
 
+router.put('/:id/upvote', (req, res, next) => {
+  Comments.findById(req.params.id)
+    .then((comment) => {
+      comment.votes++
+      return comment.save()
+    })
+    .then(() => res.send({
+      message: "You liked this comment."
+    }))
+    .catch(next)
+})
+
+router.put('/:id/downvote', (req, res, next) => {
+  Comments.findById(req.params.id)
+    .then((comment) => {
+      comment.votes--
+      return comment.save()
+    })
+    .then(() => res.send({
+      message: "You did not like this comment."
+    }))
+    .catch(next)
+})
+
 router.delete('/:id', (req, res, next) => {
   Comments.findByIdAndRemove(req.params.id)
     .then(() => res.send({

@@ -17,7 +17,12 @@ let schema = new Schema({
     type: String
   },
   timestamp: {
-    type: String
+    type: String,
+    default: Date.now()
+  },
+  vote: {
+    type: Number,
+    default: 0
   }
   //how does timestamp integrate on front end
 })
