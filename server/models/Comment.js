@@ -24,3 +24,5 @@ let schema = new Schema({
   }
   //vote type something else?
 })
+
+module.exports = mongoose.model(schemaName, schema)
