@@ -13,6 +13,11 @@ let schema = new Schema({
     ref: 'User',
     required: true
   },
+  postId: {
+    type: ObjectId,
+    ref: "Post",
+    required: true
+  },
   imgUrl: {
     type: String
   },
