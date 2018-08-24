@@ -15,12 +15,13 @@ export default class UserController {
     }
 
     login(e) {
+        console.log(e)
         e.preventDefault();
         let creds = {
             username: e.target.username.value,
             pin: e.target.pin.value
         }
-        store.login(creds, draw)
+        store.login(creds)
     }
 
 }
