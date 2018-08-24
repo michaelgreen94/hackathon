@@ -3,11 +3,12 @@ import Store from "../../store/store.js"
 
 let store = new Store()
 
-let elem = document.getElementById('app')
+let elem = document.getElementById('user')
 
-function drawUser(user) {
+function drawUser() {
+    let user = store.state.user
     let template = `
-    <h1>Hello ${user.username}</h1>
+    <h1>Hello ${user.userName}</h1>
     `
     elem.innerHTML = template
 }
@@ -32,7 +33,7 @@ export default class UserController {
             username: e.target.username.value,
             pin: e.target.pin.value
         }
-        store.loginUser(creds)
+        store.loginUser(creds, drawUser)
     }
 
 }

@@ -19,7 +19,8 @@ function setState(prop, data) {
 
 export default class Store {
     createUser(creds) {
-        server.post('/api/users/register', creds)
+        debugger
+        server.post('/auth/register', creds)
             .then(res => {
                 setState('user', new User(creds))
             })
@@ -27,12 +28,13 @@ export default class Store {
     }
 
     loginUser(creds, drawUser) {
-        server.get('/api/users/login', creds)
+        server.post('/auth/login', creds)
             .then(res => {
+                setState('user', new User(creds))
                 drawUser()
             })
             .catch(err => {
-                alert('INVALID LOGIN')
+                console.log(err)
             })
     }
 
