@@ -17,11 +17,10 @@ function setState(prop, data) {
 }
 
 export default class Store {
-    login(creds) {
-        register.post('/api/users/register')
-            .then(res => console.log(res))
-            .then(data => {
-                setState('user', new User(data))
+    createUser(creds) {
+        register.post('/api/users/register', creds)
+            .then(res => {
+                setState('user', new User(creds))
             })
             .catch(console.error)
     }

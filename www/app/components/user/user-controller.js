@@ -21,7 +21,7 @@ export default class UserController {
             username: e.target.username.value,
             pin: e.target.pin.value
         }
-        store.login(creds)
+        store.createUser(creds)
     }
 
 }
