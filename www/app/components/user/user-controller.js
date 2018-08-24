@@ -3,7 +3,7 @@ import Store from "../../store/store.js"
 
 let store = new Store()
 
-let elem = document.getElementById('user')
+let elem = document.getElementById('app')
 
 function drawUser() {
     let user = store.state.user
