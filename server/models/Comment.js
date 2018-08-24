@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
-let schemaName = 'Post'
+let schemaName = 'Comment'
 
 let schema = new Schema({
   description: {
@@ -18,6 +18,9 @@ let schema = new Schema({
   },
   timestamp: {
     type: String
+  },
+  vote: {
+    type: String
   }
-  //how does timestamp integrate on front end
+  //vote type something else?
 })
