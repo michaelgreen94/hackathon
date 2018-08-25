@@ -42,7 +42,13 @@ export default class Store {
     }
 
     getPosts(drawPosts) {
-        baseURL('api/posts/by-user/' + state.user._id)
+        server('api/posts/by-user/' + state.user._id)
+            .then(res => {
+                let posts = res.data.data.map(rawPost => {
+                    return new Post(rawPost)
+                })
+                drawPosts(posts)
+            })
     }
 
     constructor() {
