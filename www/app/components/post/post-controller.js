@@ -14,7 +14,7 @@ function drawPosts() {
   }
   template += `
   <form onsubmit="app.controllers.post.createPost(event)">
-  <input type="text" name="post" placeholder="Your Comment">
+  <input type="text" name="post" placeholder="Your Post">
   <input type="text" name="imageUrl" placeholder="Image-Url">
   <button type="submit">Submit</button>
   </form>
@@ -29,13 +29,12 @@ export default class PostController {
 
   createPost(e) {
     e.preventDefault();
-    let creds = {
+    let post = {
       description: e.target.post.value,
       imgUrl: e.target.imageUrl.value
     }
-    // store.createPost(creds, getPosts)
+    store.createPost(post, this.getPosts)
   }
-
 
   getPosts() {
     console.log(5)
