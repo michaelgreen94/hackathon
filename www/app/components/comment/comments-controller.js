@@ -32,7 +32,7 @@ export default class CommentController {
     <button type="submit">Add Comment</button>
     </form>
     `
-    document.getElementById('add-comment').innerHTML = template
+    document.getElementById('add-comment-' + postId).innerHTML = template
   }
 
   createComment(e, postId) {

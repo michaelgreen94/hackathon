@@ -11,6 +11,10 @@ export default class Post {
   }
 
   get postTemplate() {
+    let template = ""
+    this.comments.forEach(comment => {
+      template += comment.commentTemplate
+    })
     return `
         <div id="post" onclick="app.controllers.comment.drawComments('${this._id}')">
           <div>
@@ -25,9 +29,9 @@ export default class Post {
             <i class="fas fa-arrow-up" onclick="app.controllers.post.upvote()" type="submit" title="upvote"></i>
             <i class="fas fa-arrow-down" onclick="" type="submit" title="downvote"></i>
           </div>
-            <div id="comments-${this._id}"></div>
+            <div id="comments-${this._id}">${template}</div>
             </div>
-            <div id="add-comment">
+            <div id="add-comment-${this._id}">
               <button onclick="app.controllers.comment.addComment('${this._id}')">Comment</button>
             </div>
             </div>
