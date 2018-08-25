@@ -54,7 +54,6 @@ export default class PostController {
 
   showComments(id) {
     let post = store.state.posts[id]
-    debugger
     if (openPosts[id]) {
       delete openPosts[id]
       document.getElementById('comments-' + id).innerHTML = ''

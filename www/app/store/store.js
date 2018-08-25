@@ -65,7 +65,6 @@ export default class Store {
                         state.posts[comment.postId].comments.push(comment)
                     }
                 })
-                debugger
                 draw()
             })
     }
