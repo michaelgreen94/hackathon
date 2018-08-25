@@ -1,4 +1,4 @@
-import Store from "../../store/store.sj";
+import Store from "../../store/store.js";
 
 let store = new Store()
 
