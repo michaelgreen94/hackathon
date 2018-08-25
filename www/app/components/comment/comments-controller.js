@@ -37,8 +37,16 @@ export default class CommentController {
 
   createComment(e, postId) {
     console.log(e);
+    console.log('state', store.state)
     e.preventDefault();
-    store.createComment(postId)
+    let newCom = {
+      description: e.target.description.value,
+      userId: store.state.user.userId,
+      username: store.state.user.userName,
+      postId: postId
+    }
+    debugger
+    store.createComment(newCom)
   }
 
 }
