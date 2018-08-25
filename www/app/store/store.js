@@ -1,5 +1,6 @@
 import User from "../models/user.js"
 import Comment from "../models/comment.js"
+import Post from "../models/post.js";
 
 // @ts-ignore
 const server = axios.create({
