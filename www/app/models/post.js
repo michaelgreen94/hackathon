@@ -14,7 +14,7 @@ export default class Post {
     return `
         <div id="post">
           <div>
-            <h1>${this._id}</h1>
+            <h1>${this.userName}</h1>
             <h4>Timestamp: ${this.timestamp}</h4>
           </div>  
           <div>
