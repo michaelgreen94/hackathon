@@ -1,4 +1,5 @@
 import User from "../models/user.js"
+import Comment from "../models/comment.js"
 import Post from "../models/post.js";
 import { get } from "mongoose";
 
@@ -13,7 +14,8 @@ let store
 // SINGLE SOURCE OF TRUTH 
 let state = {
     user: {},
-    posts: [],
+    comment: [],
+    posts: {},
     comments: []
 }
 
@@ -22,19 +24,26 @@ function setState(prop, data) {
 }
 
 export default class Store {
-    createUser(creds, getPosts) {
+    createUser(creds, drawUser, getPosts) {
+        console.log(2)
         server.post('/auth/register', creds)
             .then(res => {
+                console.log(3)
                 setState('user', new User(creds))
+                drawUser()
                 getPosts()
             })
             .catch(console.error)
     }
 
     loginUser(creds, drawUser, getPosts) {
+        console.log(2)
         server.post('/auth/login', creds)
             .then(res => {
-                setState('user', new User(creds))
+                console.log(3)
+                //console.log('data', res)
+                setState('user', new User(res.data))
+                //console.log(this.state.user)
                 drawUser()
                 getPosts()
             })
@@ -44,17 +53,38 @@ export default class Store {
             })
     }
 
+    getComments(draw) {
+        console.log(8)
+        server.get('/api/comments/by-user/' + this.state.user.userId)
+            .then(res => {
+                console.log(9)
+                let comments = res.data.map(comm => new Comment(comm))
+                comments.foreach(comment => {
+                    state.posts[comment.postId].comments.push(comment)
+                })
+                draw()
+            })
+    }
+
     getPosts(drawPosts) {
-        server('api/posts/by-user/' + state.user._id)
+        console.log(6)
+        server('api/posts')
             .then(res => {
                 let posts = res.data.data.map(rawPost => {
                     return new Post(rawPost)
                 })
-                drawPosts()
+                //turn post into dictionary
+                posts.foreach(post => {
+                    state.posts[post._id] = post
+                })
+                console.log(7)
+                this.getComments(drawPosts)
             })
     }
 
     constructor() {
+        console.log(this.state.user)
+
         if (store) {
             return store
         }
