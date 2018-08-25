@@ -7,7 +7,6 @@ let elem = document.getElementById('app')
 
 function drawPosts() {
   console.log(10)
-  let user = store.state.user
   let posts = store.state.posts
   let template = ""
   for (let postId in posts) {
