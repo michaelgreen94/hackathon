@@ -90,8 +90,8 @@ export default class Store {
             })
     }
 
-    createComment(draw) {
-        server.post('/routes/posts')
+    createComment(newCom) {
+        server.post('/api/comments', newCom)
             .then(res => {
                 setState('comment', new Comment())
             })
