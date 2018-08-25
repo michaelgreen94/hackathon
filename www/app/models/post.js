@@ -1,11 +1,13 @@
 export default class Post {
   constructor(data) {
+    this._id = data._id
     this.description = data.description
     this.userId = data.userId
     this.imgUrl = data.imgUrl
     this.timestamp = data.timestamp
     this.username = data.username
     this.vote = data.vote
+    this.comments = []
   }
 
   get postTemplate() {

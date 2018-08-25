@@ -1,7 +1,7 @@
 import User from "../models/user.js"
 import Comment from "../models/comment.js"
 import Post from "../models/post.js";
-import { get } from "mongoose";
+
 
 // @ts-ignore
 const server = axios.create({
@@ -59,7 +59,7 @@ export default class Store {
             .then(res => {
                 console.log(9)
                 let comments = res.data.map(comm => new Comment(comm))
-                comments.foreach(comment => {
+                comments.forEach(comment => {
                     state.posts[comment.postId].comments.push(comment)
                 })
                 draw()
@@ -70,11 +70,11 @@ export default class Store {
         console.log(6)
         server('api/posts')
             .then(res => {
-                let posts = res.data.data.map(rawPost => {
+                let posts = res.data.map(rawPost => {
                     return new Post(rawPost)
                 })
                 //turn post into dictionary
-                posts.foreach(post => {
+                posts.forEach(post => {
                     state.posts[post._id] = post
                 })
                 console.log(7)

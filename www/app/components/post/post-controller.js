@@ -6,12 +6,13 @@ let store = new Store()
 let elem = document.getElementById('app')
 
 function drawPosts() {
+  console.log(10)
   let user = store.state.user
   let posts = store.state.posts
   let template = ""
-  posts.forEach(post => {
-    template += post.postTemplate
-  });
+  for (let postId in posts) {
+    template += posts[postId].postTemplate
+  }
   elem.innerHTML = template
 }
 
@@ -20,6 +21,7 @@ export default class PostController {
 
   }
   getPosts() {
+    console.log(5)
     store.getPosts(drawPosts)
   }
 

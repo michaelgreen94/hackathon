@@ -6,6 +6,7 @@ let store = new Store()
 let elem = document.getElementById('app')
 
 function drawUser() {
+    console.log(4)
     let user = store.state.user
     let template = `
     <h1>Hello ${user.userName}</h1>
@@ -20,15 +21,17 @@ export default class UserController {
 
     createUser(e, getPosts) {
         e.preventDefault();
+        console.log(1)
         let creds = {
             username: e.target.username.value,
             pin: e.target.pin.value
         }
-        store.createUser(creds, getPosts)
+        store.createUser(creds, drawUser, getPosts)
     }
 
     loginUser(e, getPosts) {
         e.preventDefault();
+        console.log(1)
         let creds = {
             username: e.target.username.value,
             pin: e.target.pin.value
