@@ -10,13 +10,13 @@
 
 <body>
   <div id="app">
-    <form onsubmit="app.controllers.user.createUser(event)">
+    <form onsubmit="app.controllers.user.createUser(event, app.controllers.post.getPosts)">
       <input type="text" name="username" placeholder="username">
       <input type="password" name="pin" placeholder="password">
       <button type="submit">Create User</button>
     </form>
 
-    <form onsubmit="app.controllers.user.loginUser(event)">
+    <form onsubmit="app.controllers.user.loginUser(event, app.controllers.post.getPosts)">
       <input type="text" name="username" placeholder="username">
       <input type="password" name="pin" placeholder="password">
       <button type="submit">Login User</button>

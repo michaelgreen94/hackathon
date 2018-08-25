@@ -1,5 +1,6 @@
 import User from "../models/user.js"
 import Post from "../models/post.js";
+import { get } from "mongoose";
 
 // @ts-ignore
 const server = axios.create({
@@ -21,19 +22,21 @@ function setState(prop, data) {
 }
 
 export default class Store {
-    createUser(creds) {
+    createUser(creds, getPosts) {
         server.post('/auth/register', creds)
             .then(res => {
                 setState('user', new User(creds))
+                getPosts()
             })
             .catch(console.error)
     }
 
-    loginUser(creds, drawUser) {
+    loginUser(creds, drawUser, getPosts) {
         server.post('/auth/login', creds)
             .then(res => {
                 setState('user', new User(creds))
                 drawUser()
+                getPosts()
             })
             .catch(err => {
                 console.log(err)
@@ -47,7 +50,7 @@ export default class Store {
                 let posts = res.data.data.map(rawPost => {
                     return new Post(rawPost)
                 })
-                drawPosts(posts)
+                drawPosts()
             })
     }
 

@@ -18,22 +18,22 @@ export default class UserController {
 
     }
 
-    createUser(e) {
+    createUser(e, getPosts) {
         e.preventDefault();
         let creds = {
             username: e.target.username.value,
             pin: e.target.pin.value
         }
-        store.createUser(creds)
+        store.createUser(creds, getPosts)
     }
 
-    loginUser(e) {
+    loginUser(e, getPosts) {
         e.preventDefault();
         let creds = {
             username: e.target.username.value,
             pin: e.target.pin.value
         }
-        store.loginUser(creds, drawUser)
+        store.loginUser(creds, drawUser, getPosts)
     }
 
 }

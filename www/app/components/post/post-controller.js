@@ -5,27 +5,22 @@ let store = new Store()
 
 let elem = document.getElementById('app')
 
-function drawPost() {
+function drawPosts() {
   let user = store.state.user
   let posts = store.state.posts
   let template = ""
   posts.forEach(post => {
-    post.postTemplate
+    template += post.postTemplate
   });
   elem.innerHTML = template
 }
 
-export default class UserController {
+export default class PostController {
   constructor() {
 
   }
-
-  createUser(e) {
-    e.preventDefault();
-    let creds = {
-      username: e.target.username.value,
-      pin: e.target.pin.value
-    }
-    store.createUser(creds)
+  getPosts() {
+    store.getPosts(drawPosts)
   }
+
 }
