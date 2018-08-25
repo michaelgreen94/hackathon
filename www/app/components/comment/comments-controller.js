@@ -27,7 +27,7 @@ export default class CommentController {
 
   addComment(postId) {
     let template = `
-    <form onsubmit="app.controllers.comment.createComment(event, '${postId}')">
+    <form onsubmit="app.controllers.comment.createComment(event, '${postId}', app.controllers.post.getPosts)">
       <input type="text" name="description" placeholder="Your text here">
     <button type="submit">Add Comment</button>
     </form>
@@ -35,7 +35,7 @@ export default class CommentController {
     document.getElementById('add-comment-' + postId).innerHTML = template
   }
 
-  createComment(e, postId) {
+  createComment(e, postId, getPosts) {
     console.log(e);
     console.log('state', store.state)
     e.preventDefault();
@@ -45,7 +45,7 @@ export default class CommentController {
       userName: store.state.user.userName,
       postId: postId
     }
-    store.createComment(newCom)
+    store.createComment(newCom, getPosts)
   }
 
   removeComment() {

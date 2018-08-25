@@ -57,10 +57,13 @@ export default class Store {
         console.log(8)
         server.get('/api/comments')
             .then(res => {
+                console.log(res)
                 console.log(9)
                 let comments = res.data.map(comm => new Comment(comm))
                 comments.forEach(comment => {
-                    state.posts[comment.postId].comments.push(comment)
+                    if (state.posts[comment.postId]) {
+                        state.posts[comment.postId].comments.push(comment)
+                    }
                 })
                 draw()
             })
@@ -90,15 +93,13 @@ export default class Store {
             })
     }
 
-    createComment(newCom) {
+    createComment(newCom, getPosts) {
         server.post('/api/comments', newCom)
             .then(res => {
                 setState('comment', new Comment(res.data))
             })
-        this.getPosts()
+        getPosts()
     }
-
-
 
     createPost(post, getPosts) {
         post.username = state.user.userName
