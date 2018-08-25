@@ -27,7 +27,7 @@ export default class Post {
           <div>
             <h4>${this.vote}</h4>
             <i class="fas fa-arrow-up" onclick="app.controllers.post.upvote(event, '${this._id}')" type="submit" title="upvote"></i>
-            <i class="fas fa-arrow-down" onclick="app.controllers.post.downvote(event)" type="submit" title="downvote"></i>
+            <i class="fas fa-arrow-down" onclick="app.controllers.post.downvote(event, '${this._id}')" type="submit" title="downvote"></i>
           </div>
             <div id="comments-${this._id}">${template}</div>
             </div>

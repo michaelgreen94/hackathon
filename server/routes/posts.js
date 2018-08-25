@@ -22,7 +22,7 @@ router.put('/:id', (req, res, next) => {
     })).catch(next)
 })
 
-router.put('/:id/upvote', (req, res, next) => {
+router.post('/:id/upvote', (req, res, next) => {
   Posts.findById(req.params.id)
     .then((post) => {
       post.vote++

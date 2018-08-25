@@ -116,10 +116,13 @@ export default class Store {
             .then(getPosts)
     }
 
-    downvote(downvote, getPosts) {
-        downvote.username = state.user.userName
-        downvote.userId = state.user.userId
-        server.post("/api/posts/userId/downvote", downvote)
+    downvote(postId, getPosts) {
+        let payload = {
+            username: state.user.userName,
+            userId: state.user.userId,
+            postId
+        }
+        server.post("/api/posts/" + postId + "/downvote", payload)
             .then(getPosts)
     }
 

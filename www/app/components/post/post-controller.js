@@ -43,12 +43,12 @@ export default class PostController {
 
   upvote(event, postId) {
     event.stopPropagation()
-    store.upvote(postId)
+    store.upvote(postId, this.getPosts)
   }
 
-  downvote(event) {
+  downvote(event, postId) {
     event.stopPropagation()
-    console.log("Downvote working")
+    store.downvote(postId, this.getPosts)
   }
 
 }
