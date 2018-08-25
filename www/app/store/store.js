@@ -106,7 +106,6 @@ export default class Store {
             .then(getPosts)
     }
 
-<<<<<<< HEAD
     upvote(upvote, getPosts) {
         upvote.username = state.user.userName
         upvote.userId = state.user.userId
@@ -114,8 +113,6 @@ export default class Store {
             .then(getPosts)
     }
 
-=======
->>>>>>> c9ff7ea03ad60d1100eb2f599450360bf927a492
     constructor() {
         if (store) {
             return store
