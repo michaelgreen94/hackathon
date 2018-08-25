@@ -34,7 +34,7 @@ router.post('/:id/upvote', (req, res, next) => {
     .catch(next)
 })
 
-router.put('/:id/downvote', (req, res, next) => {
+router.post('/:id/downvote', (req, res, next) => {
   Posts.findById(req.params.id)
     .then((post) => {
       post.vote--
