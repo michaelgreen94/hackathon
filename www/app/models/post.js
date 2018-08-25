@@ -12,7 +12,7 @@ export default class Post {
 
   get postTemplate() {
     return `
-        <div id="post">
+        <div id="post" onclick="app.controllers.comment.drawComments('${this._id}')">
           <div>
             <h1>${this.username}</h1>
             <h4>Timestamp: ${this.timestamp}</h4>
@@ -23,7 +23,11 @@ export default class Post {
           <div>
             <h4>${this.vote}</h4>
           </div>
-        </div>
+            <div id="comments-${this._id}"></div>
+            </div>
+            <div id="add-comment">
+              <button onclick="app.controllers.comment.addComment('${this._id}')">Comment</button>
+            </div>
         `
   }
 }

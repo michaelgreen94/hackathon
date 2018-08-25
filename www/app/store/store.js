@@ -66,6 +66,14 @@ export default class Store {
             })
     }
 
+    addComment(draw) {
+        server.post('/api/comments')
+            .then(res => {
+                setState('comments', new Comment(res.data))
+                draw()
+            })
+    }
+
     getPosts(drawPosts) {
         console.log(6)
         server('api/posts')
