@@ -11,7 +11,9 @@ let store
 
 // SINGLE SOURCE OF TRUTH 
 let state = {
-    user: {}
+    user: {},
+    posts: [],
+    comments: []
 }
 
 function setState(prop, data) {
@@ -37,6 +39,10 @@ export default class Store {
                 console.log(err)
                 alert('INVALID LOGIN')
             })
+    }
+
+    getPosts(drawPosts) {
+        baseURL('api/posts/by-user/' + state.user._id)
     }
 
     constructor() {
