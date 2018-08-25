@@ -13,7 +13,9 @@ let store
 // SINGLE SOURCE OF TRUTH 
 let state = {
     user: {},
-    comment: []
+    comment: [],
+    posts: [],
+    comments: []
 }
 
 function setState(prop, data) {
@@ -48,6 +50,16 @@ export default class Store {
         server.get('/api/comments/by-user/' + this.state.user.userId)
             .then(res => {
                 console.log('comments', res)
+            }
+        }
+
+    getPosts(drawPosts) {
+        server('api/posts/by-user/' + state.user._id)
+            .then(res => {
+                let posts = res.data.data.map(rawPost => {
+                    return new Post(rawPost)
+                })
+                drawPosts(posts)
             })
     }
 
