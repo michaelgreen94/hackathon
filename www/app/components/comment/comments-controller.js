@@ -15,9 +15,9 @@ export default class CommentController {
       let template = ""
       for (let i = 0; i < comments.length; i++) {
         const comment = comments[i];
-        template += comment[i].commentTemplate
+        template += comment.commentTemplate
       }
-      document.getElementById('comments-' + postId).innerHTML = template + 'COMMMENTS!!!'
+      document.getElementById('comments-' + postId).innerHTML = template
     }
     else {
       document.getElementById('comments-' + postId).innerHTML = ''
@@ -42,11 +42,14 @@ export default class CommentController {
     let newCom = {
       description: e.target.description.value,
       userId: store.state.user.userId,
-      username: store.state.user.userName,
+      userName: store.state.user.userName,
       postId: postId
     }
-    debugger
     store.createComment(newCom)
+  }
+
+  removeComment() {
+
   }
 
 }

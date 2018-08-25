@@ -93,8 +93,9 @@ export default class Store {
     createComment(newCom) {
         server.post('/api/comments', newCom)
             .then(res => {
-                setState('comment', new Comment())
+                setState('comment', new Comment(res.data))
             })
+        this.getPosts()
     }
 
 

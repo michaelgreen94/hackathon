@@ -11,7 +11,7 @@ let schema = new Schema({
   userName: {
     type: String,
     ref: 'User',
-    default: 'Anon'
+    required: true
   },
   userId: {
     type: ObjectId,
