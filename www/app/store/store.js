@@ -97,11 +97,14 @@ export default class Store {
             })
     }
 
-    createPosts(creds, getPosts) {
-        this.createPosts()
+
+
+    createPost(post, getPosts) {
+        post.username = state.user.userName
+        post.userId = state.user.userId
+        server.post("/api/posts", post)
+            .then(getPosts)
     }
-
-
 
     constructor() {
         if (store) {
