@@ -12,29 +12,38 @@ export default class Post {
 
   get postTemplate() {
     let template = ""
+    return `
+<div class="post">
+  <div class="post-content" onclick="app.controllers.post.showComments('${this._id}')">
+    <div>
+      <h1>${this.username}</h1>
+      <h4>Timestamp: ${this.timestamp}</h4>
+    </div>
+    <div>
+      <p>${this.description}</p>
+    </div>
+  </div>
+  <div>
+    <h4>${this.vote}</h4>
+    <i class="fas fa-arrow-up" onclick="app.controllers.post.upvote(event, '${this._id}')" type="submit" title="upvote"></i>
+    <i class="fas fa-arrow-down" onclick="app.controllers.post.downvote(event, '${this._id}')" type="submit" title="downvote"></i>
+  </div>
+  <div id="comments-${this._id}"></div>
+  <div id="add-comment-${this._id}">
+    <button onclick="app.controllers.comment.addComment('${this._id}')">Comment</button>
+  </div>
+  <div>
+    <button onclick="app.controllers.comment.removePost('${this._id}', app.controllers.post.getPosts)">Remove Post</button>
+  </div>
+</div>
+        `
+  }
+  showComments() {
+    let template = ''
     this.comments.forEach(comment => {
       template += comment.commentTemplate
     })
-    return `
-        <div id="post" onclick="app.controllers.comment.drawComments('${this._id}')">
-          <div>
-            <h1>${this.username}</h1>
-            <h4>Timestamp: ${this.timestamp}</h4>
-          </div>  
-          <div>
-            <p>${this.description}</p>
-          </div>
-          <div>
-            <h4>${this.vote}</h4>
-            <i class="fas fa-arrow-up" onclick="app.controllers.post.upvote(event, '${this._id}')" type="submit" title="upvote"></i>
-            <i class="fas fa-arrow-down" onclick="app.controllers.post.downvote(event, '${this._id}')" type="submit" title="downvote"></i>
-          </div>
-            <div id="comments-${this._id}">${template}</div>
-            </div>
-            <div id="add-comment-${this._id}">
-              <button onclick="app.controllers.comment.addComment('${this._id}')">Comment</button>
-            </div>
-            </div>
-        `
+    let elem = document.getElementById(`comments-${this._id}`)
+    elem.innerHTML = template
   }
 }

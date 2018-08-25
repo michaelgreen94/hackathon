@@ -15,7 +15,7 @@ let store
 let state = {
     user: {},
     comment: [],
-    posts: [],
+    posts: {},
     comments: []
 }
 
@@ -65,6 +65,7 @@ export default class Store {
                         state.posts[comment.postId].comments.push(comment)
                     }
                 })
+                debugger
                 draw()
             })
     }
@@ -84,6 +85,7 @@ export default class Store {
                 let posts = res.data.map(rawPost => {
                     return new Post(rawPost)
                 })
+                state.posts = {}
                 //turn post into dictionary
                 posts.forEach(post => {
                     state.posts[post._id] = post
@@ -106,6 +108,14 @@ export default class Store {
         post.userId = state.user.userId
         server.post("/api/posts", post)
             .then(getPosts)
+    }
+
+    removePost(postId, getPosts) {
+        server.delete('/api/posts/' + postId)
+            .then(res => {
+                getPosts(res)
+            })
+
     }
 
     upvote(postId, getPosts) {

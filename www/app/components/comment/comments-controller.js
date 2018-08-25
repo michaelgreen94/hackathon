@@ -8,22 +8,22 @@ export default class CommentController {
   constructor() {
 
   }
-  drawComments(postId) {
-    if (!active[postId]) {
-      active[postId] = true
-      let comments = store.state.posts[postId].comments
-      let template = ""
-      for (let i = 0; i < comments.length; i++) {
-        const comment = comments[i];
-        template += comment.commentTemplate
-      }
-      document.getElementById('comments-' + postId).innerHTML = template
-    }
-    else {
-      document.getElementById('comments-' + postId).innerHTML = ''
-      active[postId] = false
-    }
-  }
+  // drawComments(postId) {
+  //   if (!active[postId]) {
+  //     active[postId] = true
+  //     let comments = store.state.posts[postId].comments
+  //     let template = ""
+  //     for (let i = 0; i < comments.length; i++) {
+  //       const comment = comments[i];
+  //       template += comment.commentTemplate
+  //     }
+  //     document.getElementById('comments-' + postId).innerHTML = template
+  //   }
+  //   else {
+  //     document.getElementById('comments-' + postId).innerHTML = ''
+  //     active[postId] = false
+  //   }
+  // }
 
   addComment(postId) {
     let template = `
@@ -48,8 +48,8 @@ export default class CommentController {
     store.createComment(newCom, getPosts)
   }
 
-  removeComment() {
-
+  removePost(postId, getPosts) {
+    store.removePost(postId, getPosts)
   }
 
 }

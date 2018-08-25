@@ -4,6 +4,7 @@ import Store from "../../store/store.js"
 let store = new Store()
 
 let elem = document.getElementById('app')
+let openPosts = {}
 
 function drawPosts() {
   console.log(10)
@@ -49,6 +50,18 @@ export default class PostController {
   downvote(event, postId) {
     event.stopPropagation()
     store.downvote(postId, this.getPosts)
+  }
+
+  showComments(id) {
+    let post = store.state.posts[id]
+    debugger
+    if (openPosts[id]) {
+      delete openPosts[id]
+      document.getElementById('comments-' + id).innerHTML = ''
+      return
+    }
+    openPosts[id] = true
+    post.showComments()
   }
 
 }
