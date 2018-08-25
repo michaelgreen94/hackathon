@@ -90,6 +90,12 @@ export default class Store {
             })
     }
 
+    createPosts(creds, getPosts) {
+        this.createPosts()
+    }
+
+
+
     constructor() {
         if (store) {
             return store
