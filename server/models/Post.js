@@ -13,6 +13,10 @@ let schema = new Schema({
     ref: 'User',
     required: true
   },
+  username: {
+    type: String,
+    unique: true
+  },
   imgUrl: {
     type: String
   },
