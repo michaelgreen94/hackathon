@@ -82,6 +82,12 @@ export default class Store {
             })
     }
 
+    createPosts(creds, getPosts) {
+
+    }
+
+
+
     constructor() {
         if (store) {
             return store
