@@ -83,8 +83,6 @@ export default class Store {
     }
 
     constructor() {
-        console.log(this.state.user)
-
         if (store) {
             return store
         }
