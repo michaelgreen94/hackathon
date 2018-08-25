@@ -30,6 +30,7 @@ export default class Post {
             <div id="add-comment">
               <button onclick="app.controllers.comment.addComment('${this._id}')">Comment</button>
             </div>
+            </div>
         `
   }
 }
