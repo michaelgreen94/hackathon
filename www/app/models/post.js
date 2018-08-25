@@ -5,7 +5,7 @@ export default class Post {
     this.userId = data.userId
     this.imgUrl = data.imgUrl
     this.timestamp = data.timestamp
-    this.userName = data.username
+    this.username = data.username
     this.vote = data.vote
     this.comments = []
   }
@@ -14,7 +14,7 @@ export default class Post {
     return `
         <div id="post">
           <div>
-            <h1>${this._id}</h1>
+            <h1>${this.username}</h1>
             <h4>Timestamp: ${this.timestamp}</h4>
           </div>  
           <div>

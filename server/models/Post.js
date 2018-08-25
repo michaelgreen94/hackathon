@@ -14,8 +14,8 @@ let schema = new Schema({
     required: true
   },
   username: {
-    type: String,
-    unique: true
+    type: ObjectId,
+    ref: 'User',
   },
   imgUrl: {
     type: String
