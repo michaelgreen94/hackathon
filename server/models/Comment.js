@@ -8,6 +8,11 @@ let schema = new Schema({
     type: String,
     required: true
   },
+  userName: {
+    type: String,
+    ref: 'User',
+    default: 'Anon'
+  },
   userId: {
     type: ObjectId,
     ref: 'User',
