@@ -97,6 +97,12 @@ export default class Store {
             .then(getPosts)
     }
 
+    upvote(upvote, getPosts) {
+        upvote.username = state.user.userName
+        upvote.userId = state.user.userId
+        server.post("/api/posts/userId/upvote", upvote)
+            .then(getPosts)
+    }
 
     constructor() {
         if (store) {
