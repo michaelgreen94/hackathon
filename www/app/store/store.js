@@ -55,7 +55,7 @@ export default class Store {
 
     getComments(draw) {
         console.log(8)
-        server.get('/api/comments/by-user/' + this.state.user.userId)
+        server.get('/api/comments')
             .then(res => {
                 console.log(9)
                 let comments = res.data.map(comm => new Comment(comm))
