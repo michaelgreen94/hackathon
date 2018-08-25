@@ -15,7 +15,7 @@ let store
 let state = {
     user: {},
     comment: [],
-    posts: {},
+    posts: [],
     comments: []
 }
 
@@ -106,10 +106,20 @@ export default class Store {
             .then(getPosts)
     }
 
-    upvote(upvote, getPosts) {
-        upvote.username = state.user.userName
-        upvote.userId = state.user.userId
-        server.post("/api/posts/userId/upvote", upvote)
+    upvote(postId, getPosts) {
+        let payload = {
+            username: state.user.userName,
+            userId: state.user.userId,
+            postId
+        }
+        server.post("/api/posts/" + postId + "/upvote", payload)
+            .then(getPosts)
+    }
+
+    downvote(downvote, getPosts) {
+        downvote.username = state.user.userName
+        downvote.userId = state.user.userId
+        server.post("/api/posts/userId/downvote", downvote)
             .then(getPosts)
     }
 

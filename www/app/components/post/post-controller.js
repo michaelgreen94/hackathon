@@ -41,4 +41,14 @@ export default class PostController {
     store.getPosts(drawPosts)
   }
 
+  upvote(event, postId) {
+    event.stopPropagation()
+    store.upvote(postId)
+  }
+
+  downvote(event) {
+    event.stopPropagation()
+    console.log("Downvote working")
+  }
+
 }
